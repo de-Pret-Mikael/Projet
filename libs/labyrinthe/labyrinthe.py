@@ -30,8 +30,8 @@ class cell:
 
 class labyrinthe:
     def __init__(self,height=3,width=3):
-        self.height = height
-        self.width = width
+        self.height = round(height)
+        self.width = round(width)
         self.laby = []
         self.wall = []
 
@@ -105,7 +105,7 @@ class labyrinthe:
 
 #print("■■■■■")
 #print("■■▲■■")
-l =  labyrinthe(5,10)
+l =  labyrinthe(3,6)
 l.buildGrid()
 l.buildWay()
 l.show()
