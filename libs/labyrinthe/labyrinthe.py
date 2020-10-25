@@ -103,8 +103,6 @@ class labyrinthe:
 
 
 
-#print("■■■■■")
-#print("■■▲■■")
 l =  labyrinthe(3,6)
 l.buildGrid()
 l.buildWay()
