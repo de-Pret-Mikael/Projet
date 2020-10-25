@@ -39,9 +39,10 @@ class labyrinthe:
     def valVerif(self):
         for y in self.laby:
             for x in y:
-                if x.numb != 1:
+                if x.numb != 0:
+                    return True
+        return False
 
-        return
     def show(self):
         for j in self.laby:
             t = []
@@ -58,5 +59,3 @@ l.buildGrid(3, 3)
 #print(l.wall)
 #print("■■■■■")
 #print("■■▲■■")
-
-print(l.buildWay())
