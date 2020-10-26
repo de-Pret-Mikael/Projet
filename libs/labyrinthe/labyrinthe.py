@@ -8,6 +8,7 @@ class cell:
         self.x = x
         self.y = y
         self.wall = wall
+        self.hero = False
         if not self.wall:
             self.numb = self.__class__.count
             self.__class__.count +=1
