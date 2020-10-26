@@ -1,4 +1,4 @@
-"▲▶▼◀■□"
+"▲▶▼◀■□●"
 
 import random
 class cell:
@@ -98,6 +98,8 @@ class labyrinthe:
             for i in j:
                 if i.wall:
                     t.append("■")
+                elif i.hero:
+                    t.append("●")
                 else:
                     t.append("□")
             print("".join(t))
@@ -107,4 +109,5 @@ class labyrinthe:
 l =  labyrinthe(3,6)
 l.buildGrid()
 l.buildWay()
+l.laby[1][1].hero = True
 l.show()
