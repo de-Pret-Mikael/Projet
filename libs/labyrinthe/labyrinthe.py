@@ -1,5 +1,4 @@
 #▲▶▼◀■□●
-
 import random
 class cell:
     count = 0
@@ -27,6 +26,11 @@ class cell:
         return self.__id
 
     def cellAdj(self,xMax,yMax):
+        """
+        :param xMax: valeur max de x
+        :param yMax: valeur max de y
+        :return envoie un dictionnaire
+        """
         dic = {}
         xMax = 2*xMax
         yMax = 2*yMax
@@ -57,6 +61,7 @@ class labyrinthe:
         return self.__width
 
     def buildGrid(self):
+        """"""
         line = self.height
         rows = self.width
         for y in range(0,2*line+1):
@@ -71,27 +76,28 @@ class labyrinthe:
                     self.laby[y].append(cell(x, y))
 
     def buildWay(self):
+        """"""
         while self.valVerif():
             if len(self.wall):
                 rand = random.randrange(0, len(self.wall))
             else:
                 break
-            x = list(map(lambda y:int(y),self.wall[rand].split(",")))
+            coord = list(map(lambda y:int(y), self.wall[rand].split(",")))
             del self.wall[rand]
-            cell = self.laby[x[1]][x[0]]
+            cell = self.laby[coord[1]][coord[0]]
             dic = cell.cellAdj(self.width,self.height)
-            if not x[0]%2:
-                vRigth = self.laby[x[1]][dic["right"]].numb
-                vLeft = self.laby[x[1]][dic["left"]].numb
+            if not coord[0] % 2:
+                vRigth = self.laby[coord[1]][dic["right"]].numb
+                vLeft = self.laby[coord[1]][dic["left"]].numb
                 if not (vRigth==vLeft):
                     cell.wall = False
                     if (vRigth > vLeft):
                         self.newVal(vRigth,vLeft)
                     else:
                         self.newVal(vLeft,vRigth)
-            if not x[1]%2:
-                vDown = self.laby[dic["down"]][x[0]].numb
-                vTop =self.laby[dic["top"]][x[0]].numb
+            if not coord[1] % 2:
+                vDown = self.laby[dic["down"]][coord[0]].numb
+                vTop =self.laby[dic["top"]][coord[0]].numb
                 if not (vDown == vTop):
                     cell.wall = False
                     if (vDown > vTop):
@@ -100,12 +106,14 @@ class labyrinthe:
                         self.newVal(vTop,vDown)
 
     def newVal(self,val,nVal):
+        """"""
         for y in self.laby:
             for x in y:
                 if x.numb == val:
                     x.numb = nVal
 
     def valVerif(self):
+        """"""
         for y in self.laby:
             for x in y:
                 if x.numb != 0 or x.numb != -1:
@@ -113,6 +121,7 @@ class labyrinthe:
         return False
 
     def show(self):
+        """"""
         for j in self.laby:
             t = []
             for i in j:
