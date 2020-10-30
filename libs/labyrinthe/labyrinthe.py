@@ -19,13 +19,13 @@ class cell:
         dic = {}
         xMax = 2*xMax
         yMax = 2*yMax
-        if self.y-1 != 0:
+        if self.y-1 >= 0:
             dic["top"] = self.y-1
-        if self.x+1 != xMax:
+        if self.x+1 <= xMax:
             dic["right"] = self.x+1
-        if self.y+1 != yMax:
+        if self.y+1 <= yMax:
             dic["down"] = self.y+1
-        if self.x-1 != 0:
+        if self.x-1 >= 0:
             dic["left"] = self.x-1
         return dic
 
