@@ -1,4 +1,4 @@
-"▲▶▼◀■□●"
+#▲▶▼◀■□●
 
 import random
 class cell:
@@ -105,9 +105,9 @@ class labyrinthe:
             print("".join(t))
 
 
-
-l =  labyrinthe(3,6)
-l.buildGrid()
-l.buildWay()
-l.laby[1][1].hero = True
-l.show()
+if __name__ == "__main__":
+    l =  labyrinthe(3,6)
+    l.buildGrid()
+    l.buildWay()
+    l.laby[1][1].hero = True
+    l.show()
