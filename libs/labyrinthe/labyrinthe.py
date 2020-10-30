@@ -4,9 +4,9 @@ import random
 class cell:
     count = 0
     def __init__(self,x,y,wall=False):
-        self.id = "{},{}".format(x,y)
-        self.x = x
-        self.y = y
+        self.__id = "{},{}".format(x,y)
+        self.__x = x
+        self.__y = y
         self.wall = wall
         self.hero = False
         if not self.wall:
@@ -14,6 +14,17 @@ class cell:
             self.__class__.count +=1
         else:
             self.numb = -1
+    @property
+    def x(self):
+        return self.__x
+
+    @property
+    def y(self):
+        return self.__y
+
+    @property
+    def id(self):
+        return self.__id
 
     def cellAdj(self,xMax,yMax):
         dic = {}
@@ -31,12 +42,19 @@ class cell:
 
 class labyrinthe:
     def __init__(self,height=3,width=3):
-        self.height = round(height)
-        self.width = round(width)
+        self.__height = round(height)
+        self.__width = round(width)
         self.laby = []
         self.wall = []
         self.buildGrid()
         self.buildWay()
+
+    @property
+    def height(self):
+        return self.__height
+    @property
+    def width(self):
+        return self.__width
 
     def buildGrid(self):
         line = self.height
