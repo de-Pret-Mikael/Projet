@@ -35,6 +35,8 @@ class labyrinthe:
         self.width = round(width)
         self.laby = []
         self.wall = []
+        self.buildGrid()
+        self.buildWay()
 
     def buildGrid(self):
         line = self.height
@@ -107,7 +109,5 @@ class labyrinthe:
 
 if __name__ == "__main__":
     l =  labyrinthe(3,6)
-    l.buildGrid()
-    l.buildWay()
     l.laby[1][1].hero = True
     l.show()
