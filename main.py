@@ -8,7 +8,10 @@ if __name__ == "__main__":
     png.y = 1
     l.popHero(png.x,png.y)
     l.show()
-    png.choix_deplacement()
-    heroPos = {"lastx":png.lastx,"lasty":png.lasty,"newx":png.x,"newy":png.y}
-    l.heroMove(**heroPos)
-    l.show()
+    k = 0
+    while k<10:
+        png.choix_deplacement()
+        heroPos = {"lastx":png.lastx,"lasty":png.lasty,"newx":png.x,"newy":png.y}
+        l.heroMove(**heroPos)
+        l.show()
+        k +=1
