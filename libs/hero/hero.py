@@ -54,11 +54,11 @@ class hero:
 
     def haut(self):
         self.passe(self.x,self.y)
-        self.y += 1
+        self.y -= 1
 
     def bas(self):
         self.passe(self.x,self.y)
-        self.y -= 1
+        self.y += 1
 
     # def affPos(self):
     #   hero.update(setPosi)
