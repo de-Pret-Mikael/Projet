@@ -73,10 +73,8 @@ class hero:
 
         # deci = int(decal)
         if decal == 6:
-            print('tt')
             self.droite()
         if decal == 8:
-            print('tt')
             self.haut()
         if decal == 4:
             self.gauche()

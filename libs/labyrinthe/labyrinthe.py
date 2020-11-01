@@ -127,6 +127,9 @@ class labyrinthe:
         self.get_cell(newx,newy).hero = True
         self.get_cell(lastx,lasty).hero = False
 
+    def popHero(self,x,y):
+        self.get_cell(x,y).hero = True
+
     def show(self):
         """"""
         for j in self.laby:
