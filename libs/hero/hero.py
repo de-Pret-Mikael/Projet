@@ -26,38 +26,38 @@ class hero:
     def x(self, i):
         if not isinstance(i, int):
             raise ValueError("not integer")
-        self._x = i
+        self.__x = i
 
     @y.setter
     def y(self, i):
         if not isinstance(i, int):
             raise ValueError("not integer")
-        self._y = i
+        self.__y = i
 
     @decal.setter
     def decal(self, i):
         if not isinstance(i, int):
             raise ValueError("not integer")
-        self._decal = i
+        self.__decal = i
 
     def setPosi(self, x, y):
         self.x = x
         self.y = y
 
     def droite(self):
-        self.lastx = self.x
+        self.passe(self.x,self.y)
         self.x += 1
 
     def gauche(self):
-        self.lastx = self.x
+        self.passe(self.x,self.y)
         self.x -= 1
 
     def haut(self):
-        self.lasty = self.y
+        self.passe(self.x,self.y)
         self.y += 1
 
     def bas(self):
-        self.lasty = self.y
+        self.passe(self.x,self.y)
         self.y -= 1
 
     # def affPos(self):
@@ -84,14 +84,15 @@ class hero:
             self.bas()
 
 
-def passe(self, lastx, lasty):
-    self.lastx = lastx
-    self.lasty = lasty
+    def passe(self, lastx, lasty):
+        self.lastx = lastx
+        self.lasty = lasty
 
 
 if __name__ == "__main__":
     pnj = hero()
     pnj.x = randint(1, 8)
+    print(pnj.x)
     pnj.y = randint(1, 8)
     print(pnj.x, pnj.y, pnj.lastx, pnj.lasty)
     pnj.choix_deplacement()
