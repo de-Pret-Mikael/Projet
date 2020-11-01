@@ -5,8 +5,6 @@ class hero:
         self.x=0
         self.y=0
         self.decal = 0
-    def depPosi(self):
-        x = randint()
     def setPosi(self,x,y):
         self.x=x
         self.y=y
@@ -27,10 +25,24 @@ class hero:
 
 
     def choix_deplacement(self):
-        self.decal = input("appuyez sur 6 pour droite, 4 pour gauche, 2 pour bas et 8 pour haut puis ENTER")
-        if decal == 6:
+        decal=0
+        self.decal = int(input("appuyez sur 6 pour droite, 4 pour gauche, 2 pour bas et 8 pour haut puis ENTER"))
+        while decal == 6 or decal == 4 or decal == 2 or decal == 8:
+           # deci = int(decal)
+            if decal == 6:
+                droite(hero)
+            if decal == 8:
+                haut(hero)
+            if decal == 4:
+                gauche(hero)
+            if decal == 2:
+                bas(hero)
 
 
-hero.x = randint(1, 8)
-hero.y = randint(1, 8)
-hero.choix_deplacement(0)
+if __name__ == "__main__":
+    pnj=hero()
+    pnj.x = randint(1, 8)
+    pnj.y = randint(1, 8)
+    pnj.choix_deplacement()
+
+
