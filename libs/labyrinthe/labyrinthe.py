@@ -123,7 +123,7 @@ class labyrinthe:
                     return True
         return False
 
-    def whereEntite(self,lastx,lasty,newx,newy):
+    def heroMove(self,lastx,lasty,newx,newy):
         self.get_cell(newx,newy).hero = True
         self.get_cell(lastx,lasty).hero = False
 
