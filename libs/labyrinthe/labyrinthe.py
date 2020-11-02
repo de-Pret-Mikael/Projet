@@ -8,6 +8,7 @@ class cell:
         self.__y = y
         self.wall = wall
         self.hero = False
+        self.end = False
         if not self.wall:
             self.numb = self.__class__.count
             self.__class__.count +=1
@@ -48,10 +49,13 @@ class labyrinthe:
     def __init__(self,height=3,width=3):
         self.__height = round(height)
         self.__width = round(width)
+        self.start = {"x":None,"y":None}
+        self.end = {"x":None,"y":None}
         self.laby = []
         self.wall = []
         self.buildGrid()
         self.buildWay()
+        self.startAndEnd()
 
     @property
     def height(self):
@@ -130,6 +134,26 @@ class labyrinthe:
     def popHero(self,x,y):
         self.get_cell(x,y).hero = True
 
+    def startAndEnd(self):
+        listOfCell = []
+        for y in self.laby:
+            for x in y:
+                if not x.wall:
+                    listOfCell.append(x)
+        rand = random.randrange(0, len(listOfCell))
+        self.set_start(listOfCell[rand].x,listOfCell[rand].y)
+        del listOfCell[rand]
+        rand = random.randrange(0, len(listOfCell))
+        listOfCell[rand].end = True
+        self.set_end(listOfCell[rand].x,listOfCell[rand].y)
+
+    def set_start(self,x,y):
+        self.start = {"x":x,"y":y}
+
+    def set_end(self,x,y):
+        self.end = {"x":x,"y":y}
+
+
     def show(self):
         """"""
         for j in self.laby:
@@ -139,6 +163,8 @@ class labyrinthe:
                     t.append("■")
                 elif i.hero:
                     t.append("●")
+                elif i.end:
+                    t.append("▼")
                 else:
                     t.append("□")
             print("".join(t))
@@ -154,5 +180,5 @@ class labyrinthe:
 
 if __name__ == "__main__":
     l =  labyrinthe(3,6)
-    l.laby[1][1].hero = True
+    l.popHero(**l.start)
     l.show()
