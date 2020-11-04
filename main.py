@@ -4,9 +4,8 @@ import os
 if __name__ == "__main__":
     l =labyrinthe(3,6)
     png = hero()
-    png.x = 1
-    png.y = 1
-    l.popHero(png.x,png.y)
+    print(l.start)
+    png.setPosi(**l.start)
     l.show()
     k = 0
     while k<10:
