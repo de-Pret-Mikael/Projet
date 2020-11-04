@@ -1,16 +1,13 @@
 from random import *
-
-from libs import labyrinthe
-
+from libs.labyrinthe import labyrinthe
 class hero:
 
-    def __init__(self, laby):
+    def __init__(self):
         self.__x = 0
         self.__y = 0
         self.__decal = 0
         self.lastx = 0
         self.lasty = 0
-        self.laby = laby
 
     @property
     def x(self):
@@ -46,30 +43,30 @@ class hero:
         self.x = x
         self.y = y
 
-    def droite(self):
+    def droite(self, laby):
         self.passe(self.x,self.y)
-        if self.pos(self.x,self.y+1):
+        if laby.get_cell(self.x+1,self.y).wall:
             print('fail')
         else:
             self.x += 1
 
-    def gauche(self):
+    def gauche(self, laby):
         self.passe(self.x,self.y)
-        if self.pos(self.x,self.y+1):
+        if laby.get_cell(self.x-1,self.y).wall:
             print('fail')
         else:
             self.x -= 1
 
-    def haut(self):
+    def haut(self, laby):
         self.passe(self.x,self.y)
-        if self.pos(self.x,self.y+1):
+        if laby.get_cell(self.x,self.y-1).wall:
             print('fail')
         else:
             self.y -= 1
 
-    def bas(self):
+    def bas(self, laby):
         self.passe(self.x,self.y)
-        if self.pos(self.x,self.y+1):
+        if laby.get_cell(self.x,self.y+1).wall:
             print('fail')
         else:
             self.y += 1
@@ -79,7 +76,7 @@ class hero:
     # def affPos(self):
     #   hero.update(setPosi)
 
-    def choix_deplacement(self):
+    def choix_deplacement(self,laby):
         decal = 0
         condi = True
         while condi:
@@ -89,13 +86,13 @@ class hero:
 
         # deci = int(decal)
         if decal == 6:
-            self.droite()
+            self.droite(laby)
         if decal == 8:
-            self.haut()
+            self.haut(laby)
         if decal == 4:
-            self.gauche()
+            self.gauche(laby)
         if decal == 2:
-            self.bas()
+            self.bas(laby)
 
 
     def passe(self, lastx, lasty):
@@ -105,10 +102,10 @@ class hero:
 
 if __name__ == "__main__":
     l = labyrinthe(3,6)
-    pnj = hero(l.laby())
+    pnj = hero()
     pnj.x = randint(1, 8)
     print(pnj.x)
     pnj.y = randint(1, 8)
     print(pnj.x, pnj.y, pnj.lastx, pnj.lasty)
-    pnj.choix_deplacement()
+    pnj.choix_deplacement(l)
     print(pnj.x, pnj.y, pnj.lastx, pnj.lasty)

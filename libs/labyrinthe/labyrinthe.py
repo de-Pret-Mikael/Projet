@@ -56,10 +56,6 @@ class labyrinthe:
         self.buildGrid()
         self.buildWay()
         self.startAndEnd()
-        self.laby = self.laby()
-
-    def laby(self):
-        return self.wall()
 
     @property
     def height(self):
@@ -132,8 +128,8 @@ class labyrinthe:
         return False
 
     def heroMove(self,lastx,lasty,newx,newy):
-        self.get_cell(newx,newy).hero = True
         self.get_cell(lastx,lasty).hero = False
+        self.get_cell(newx,newy).hero = True
 
     def popHero(self,x,y):
         self.get_cell(x,y).hero = True
