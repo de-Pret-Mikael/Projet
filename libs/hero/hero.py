@@ -1,14 +1,16 @@
 from random import *
 
+from libs import labyrinthe
 
 class hero:
 
-    def __init__(self):
+    def __init__(self, laby):
         self.__x = 0
         self.__y = 0
         self.__decal = 0
         self.lastx = 0
         self.lasty = 0
+        self.laby = laby
 
     @property
     def x(self):
@@ -46,20 +48,34 @@ class hero:
 
     def droite(self):
         self.passe(self.x,self.y)
-        self.x += 1
+        if self.pos(self.x,self.y+1):
+            print('fail')
+        else:
+            self.x += 1
 
     def gauche(self):
         self.passe(self.x,self.y)
-        self.x -= 1
+        if self.pos(self.x,self.y+1):
+            print('fail')
+        else:
+            self.x -= 1
 
     def haut(self):
         self.passe(self.x,self.y)
-        self.y -= 1
+        if self.pos(self.x,self.y+1):
+            print('fail')
+        else:
+            self.y -= 1
 
     def bas(self):
         self.passe(self.x,self.y)
-        self.y += 1
+        if self.pos(self.x,self.y+1):
+            print('fail')
+        else:
+            self.y += 1
 
+    def pos(self, position):
+        return self.laby[position[0]][position[1]] != -1
     # def affPos(self):
     #   hero.update(setPosi)
 
@@ -88,7 +104,8 @@ class hero:
 
 
 if __name__ == "__main__":
-    pnj = hero()
+    l = labyrinthe(3,6)
+    pnj = hero(l.laby())
     pnj.x = randint(1, 8)
     print(pnj.x)
     pnj.y = randint(1, 8)

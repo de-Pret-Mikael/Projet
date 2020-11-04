@@ -56,6 +56,10 @@ class labyrinthe:
         self.buildGrid()
         self.buildWay()
         self.startAndEnd()
+        self.laby = self.laby()
+
+    def laby(self):
+        return self.wall()
 
     @property
     def height(self):
