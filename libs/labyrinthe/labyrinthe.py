@@ -135,8 +135,8 @@ class labyrinthe:
         self.get_cell(lastx,lasty).hero = False
         self.get_cell(newx,newy).hero = True
 
-    def popHero(self,x,y):
-        self.get_cell(x,y).hero = True
+    def popHero(self):
+        self.get_cell(**self.start).hero = True
 
     def startAndEnd(self):
         listOfCell = []
@@ -150,6 +150,7 @@ class labyrinthe:
         rand = random.randrange(0, len(listOfCell))
         listOfCell[rand].end = True
         self.set_end(listOfCell[rand].x,listOfCell[rand].y)
+        self.popHero()
 
     def set_start(self,x,y):
         self.start = {"x":x,"y":y}
