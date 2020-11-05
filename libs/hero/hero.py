@@ -1,7 +1,5 @@
 from random import *
 
-import self as self
-
 from libs.labyrinthe import labyrinthe
 
 
@@ -54,8 +52,9 @@ class hero:
             print('fail')
         else:
             self.x += 1
-            return self.x
-            return self.y
+            if laby.end == {"x": self.x, "y": self.y}:
+                print('fiejufh')
+            #self.end = {"x": x, "y": y}
 
     def gauche(self, laby):
         self.passe(self.x,self.y)
@@ -63,8 +62,7 @@ class hero:
             print('fail')
         else:
             self.x -= 1
-            return self.x
-            return self.y
+            return self.x, self.y
 
     def haut(self, laby):
         self.passe(self.x,self.y)
@@ -72,8 +70,7 @@ class hero:
             print('fail')
         else:
             self.y -= 1
-            return self.x
-            return self.y
+            return self.x, self.y
 
     def bas(self, laby):
         self.passe(self.x,self.y)
@@ -81,8 +78,7 @@ class hero:
             print('fail')
         else:
             self.y += 1
-            return self.x
-            return self.y
+            return self.x, self.y
 
     def pos(self, position):
         return self.laby[position[0]][position[1]] != -1
@@ -112,8 +108,10 @@ class hero:
         self.lastx = lastx
         self.lasty = lasty
 
-    def end(self):
-        print('couc',labyrinthe.set_end())
+    def end(self, laby):
+        if laby.end == self.droite() or laby.end == self.gauche() or laby.end == self.haut() or laby.end == self.bas():
+            print('fini')
+
 
     #def end(self,x,y):
         #if set_end() self.gauche()
@@ -128,5 +126,5 @@ if __name__ == "__main__":
     print(pnj.x, pnj.y, pnj.lastx, pnj.lasty)
     pnj.choix_deplacement(l)
     print(pnj.x, pnj.y, pnj.lastx, pnj.lasty)
-    print()
+
 
