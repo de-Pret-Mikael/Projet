@@ -1,8 +1,6 @@
 #▲▶▼◀■□●
 import random
 
-from self import self
-from libs.hero import hero
 
 class cell:
     count = 0
@@ -157,8 +155,6 @@ class labyrinthe:
 
     def set_end(self,x,y):
         self.end = {"x":x,"y":y}
-        print(x,y)
-        return x,y
 
 
     def show(self):
@@ -187,5 +183,4 @@ class labyrinthe:
 
 if __name__ == "__main__":
     l =  labyrinthe(3,6)
-    l.popHero(**l.start)
     l.show()
