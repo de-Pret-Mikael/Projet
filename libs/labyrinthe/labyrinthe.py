@@ -1,5 +1,9 @@
 #▲▶▼◀■□●
 import random
+
+from self import self
+from libs.hero import hero
+
 class cell:
     count = 0
     def __init__(self,x,y,wall=False):
@@ -152,6 +156,8 @@ class labyrinthe:
 
     def set_end(self,x,y):
         self.end = {"x":x,"y":y}
+        print(x,y)
+        return x,y
 
 
     def show(self):

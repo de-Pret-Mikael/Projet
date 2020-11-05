@@ -2,7 +2,7 @@ from libs.labyrinthe import *
 from libs.hero import *
 import os
 if __name__ == "__main__":
-    l =labyrinthe(3,6)
+    l =labyrinthe(2,3)
     png = hero()
     png.x = 1
     png.y = 1
