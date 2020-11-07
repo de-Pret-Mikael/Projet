@@ -50,28 +50,28 @@ class hero:
     def droite(self, laby):
         self.passe(self.x,self.y)
         if laby.get_cell(self.x+1,self.y).wall:
-            print('fail')
+            print('Vous ne pouvez pas traverser les murs :(')
         else:
             self.x += 1
 
     def gauche(self, laby):
         self.passe(self.x,self.y)
         if laby.get_cell(self.x-1,self.y).wall:
-            print('fail')
+            print('Vous ne pouvez pas traverser les murs :(')
         else:
             self.x -= 1
 
     def haut(self, laby):
         self.passe(self.x,self.y)
         if laby.get_cell(self.x,self.y-1).wall:
-            print('fail')
+            print('Vous ne pouvez pas traverser les murs :(')
         else:
             self.y -= 1
 
     def bas(self, laby):
         self.passe(self.x,self.y)
         if laby.get_cell(self.x,self.y+1).wall:
-            print('fail')
+            print('Vous ne pouvez pas traverser les murs :(')
         else:
             self.y += 1
 
@@ -82,19 +82,21 @@ class hero:
         decal = 0
         condi = True
         while condi:
-            decal = int(input("appuyez sur 6 pour droite, 4 pour gauche, 2 pour bas et 8 pour haut et 5 pour exit puis ENTER "))
-            if decal == 6 or decal == 4 or decal == 2 or decal == 8 or decal == 5:
+            decal = input("appuyez sur 6 pour droite, 4 pour gauche, 2 pour bas et 8 pour haut et 5 pour exit puis ENTER ")
+            if decal == '6' or decal == '4' or decal == '2' or decal == '8' or decal == '5':
                 condi = False
+            else:
+                print('Mauvais caractère')
 
-        if decal == 6:
+        if decal == '6':
             self.droite(laby)
-        if decal == 8:
+        if decal == '8':
             self.haut(laby)
-        if decal == 4:
+        if decal == '4':
             self.gauche(laby)
-        if decal == 2:
+        if decal == '2':
             self.bas(laby)
-        if decal == 5:
+        if decal == '5':
             self.end(**laby.end)
 
 
@@ -104,8 +106,12 @@ class hero:
 
     def end(self, x, y):
         if x == self.x and y == self.y:
-            print('fini')
-            self.fin = True
+            fini = input('êtes vous sur y/n: ')
+            if fini == 'y':
+                print('Vous avez réussi à sortir, bien jouer')
+                self.fin = True
+            if fini == 'n':
+                print('bonne chance pour la suite')
 
 
 if __name__ == "__main__":

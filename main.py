@@ -4,7 +4,6 @@ import os
 if __name__ == "__main__":
     l =labyrinthe(2,2)
     png = hero()
-    print(l.start)
     png.setPosi(**l.start)
     l.show()
 
