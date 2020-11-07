@@ -108,10 +108,7 @@ class hero:
         if x == self.x and y == self.y:
             fini = input('êtes vous sur y/n: ')
             if fini == 'y':
-                print('Vous avez réussi à sortir, bien jouer')
                 self.fin = True
-            if fini == 'n':
-                print('bonne chance pour la suite')
 
 
 if __name__ == "__main__":
