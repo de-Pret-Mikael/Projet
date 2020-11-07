@@ -11,6 +11,7 @@ class hero:
         self.__decal = 0
         self.lastx = 0
         self.lasty = 0
+        self.fin = False
 
     @property
     def x(self):
@@ -52,9 +53,6 @@ class hero:
             print('fail')
         else:
             self.x += 1
-            if laby.end == {"x": self.x, "y": self.y}:
-                print('fiejufh')
-            #self.end = {"x": x, "y": y}
 
     def gauche(self, laby):
         self.passe(self.x,self.y)
@@ -62,7 +60,6 @@ class hero:
             print('fail')
         else:
             self.x -= 1
-            return self.x, self.y
 
     def haut(self, laby):
         self.passe(self.x,self.y)
@@ -70,7 +67,6 @@ class hero:
             print('fail')
         else:
             self.y -= 1
-            return self.x, self.y
 
     def bas(self, laby):
         self.passe(self.x,self.y)
@@ -78,22 +74,18 @@ class hero:
             print('fail')
         else:
             self.y += 1
-            return self.x, self.y
 
     def pos(self, position):
         return self.laby[position[0]][position[1]] != -1
-    # def affPos(self):
-    #   hero.update(setPosi)
 
     def choix_deplacement(self,laby):
         decal = 0
         condi = True
         while condi:
             decal = int(input("appuyez sur 6 pour droite, 4 pour gauche, 2 pour bas et 8 pour haut puis ENTER "))
-            if decal == 6 or decal == 4 or decal == 2 or decal == 8:
+            if decal == 6 or decal == 4 or decal == 2 or decal == 8 or decal == 5:
                 condi = False
 
-        # deci = int(decal)
         if decal == 6:
             self.droite(laby)
         if decal == 8:
@@ -102,25 +94,24 @@ class hero:
             self.gauche(laby)
         if decal == 2:
             self.bas(laby)
+        if decal == 5:
+            self.end(**laby.end)
 
 
     def passe(self, lastx, lasty):
         self.lastx = lastx
         self.lasty = lasty
 
-    def end(self, laby):
-        if laby.end == self.droite() or laby.end == self.gauche() or laby.end == self.haut() or laby.end == self.bas():
+    def end(self, x, y):
+        if x == self.x and y == self.y:
             print('fini')
-
-
-    #def end(self,x,y):
-        #if set_end() self.gauche()
-     #   print(self.x,self.y)
+            self.fin = True
 
 
 if __name__ == "__main__":
     l = labyrinthe(3,6)
     pnj = hero()
+    print(pnj)
     pnj.x = randint(1, 8)
     pnj.y = randint(1, 8)
     print(pnj.x, pnj.y, pnj.lastx, pnj.lasty)

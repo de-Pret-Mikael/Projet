@@ -7,10 +7,9 @@ if __name__ == "__main__":
     print(l.start)
     png.setPosi(**l.start)
     l.show()
-    k = 0
-    while k<10:
+
+    while not png.fin:
         png.choix_deplacement(l)
         heroPos = {"lastx":png.lastx,"lasty":png.lasty,"newx":png.x,"newy":png.y}
         l.heroMove(**heroPos)
         l.show()
-        k +=1
