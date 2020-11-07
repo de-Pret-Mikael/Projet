@@ -82,7 +82,7 @@ class hero:
         decal = 0
         condi = True
         while condi:
-            decal = int(input("appuyez sur 6 pour droite, 4 pour gauche, 2 pour bas et 8 pour haut puis ENTER "))
+            decal = int(input("appuyez sur 6 pour droite, 4 pour gauche, 2 pour bas et 8 pour haut et 5 pour exit puis ENTER "))
             if decal == 6 or decal == 4 or decal == 2 or decal == 8 or decal == 5:
                 condi = False
 
