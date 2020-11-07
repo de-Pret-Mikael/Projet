@@ -6,9 +6,11 @@ if __name__ == "__main__":
     png = hero()
     png.setPosi(**l.start)
     l.show()
-
     while not png.fin:
         png.choix_deplacement(l)
+        os.system("cls")
+        if png.fin:
+            print('bonne chance pour la suite')
         heroPos = {"lastx":png.lastx,"lasty":png.lasty,"newx":png.x,"newy":png.y}
         l.heroMove(**heroPos)
         l.show()
