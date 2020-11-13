@@ -1,5 +1,8 @@
 from random import *
-from libs.labyrinthe import Labyrinthe
+
+from libs.labyrinthe import labyrinthe
+
+
 class hero:
 
     def __init__(self):
@@ -8,6 +11,7 @@ class hero:
         self.__decal = 0
         self.lastx = 0
         self.lasty = 0
+        self.fin = False
 
     @property
     def x(self):
@@ -46,66 +50,75 @@ class hero:
     def droite(self, laby):
         self.passe(self.x,self.y)
         if laby.get_cell(self.x+1,self.y).wall:
-            print('fail')
+            print('Vous ne pouvez pas traverser les murs :(')
         else:
             self.x += 1
 
     def gauche(self, laby):
         self.passe(self.x,self.y)
         if laby.get_cell(self.x-1,self.y).wall:
-            print('fail')
+            print('Vous ne pouvez pas traverser les murs :(')
         else:
             self.x -= 1
 
     def haut(self, laby):
         self.passe(self.x,self.y)
         if laby.get_cell(self.x,self.y-1).wall:
-            print('fail')
+            print('Vous ne pouvez pas traverser les murs :(')
         else:
             self.y -= 1
 
     def bas(self, laby):
         self.passe(self.x,self.y)
         if laby.get_cell(self.x,self.y+1).wall:
-            print('fail')
+            print('Vous ne pouvez pas traverser les murs :(')
         else:
             self.y += 1
 
     def pos(self, position):
         return self.laby[position[0]][position[1]] != -1
-    # def affPos(self):
-    #   hero.update(setPosi)
 
     def choix_deplacement(self,laby):
         decal = 0
         condi = True
         while condi:
-            decal = int(input("appuyez sur 6 pour droite, 4 pour gauche, 2 pour bas et 8 pour haut puis ENTER "))
-            if decal == 6 or decal == 4 or decal == 2 or decal == 8:
+            decal = input("appuyez sur 6 pour droite, 4 pour gauche, 2 pour bas et 8 pour haut et 5 pour exit puis ENTER ")
+            if decal == '6' or decal == '4' or decal == '2' or decal == '8' or decal == '5':
                 condi = False
+            else:
+                print('Mauvais caractère')
 
-        # deci = int(decal)
-        if decal == 6:
+        if decal == '6':
             self.droite(laby)
-        if decal == 8:
+        if decal == '8':
             self.haut(laby)
-        if decal == 4:
+        if decal == '4':
             self.gauche(laby)
-        if decal == 2:
+        if decal == '2':
             self.bas(laby)
+        if decal == '5':
+            self.end(**laby.end)
 
 
     def passe(self, lastx, lasty):
         self.lastx = lastx
         self.lasty = lasty
 
+    def end(self, x, y):
+        if x == self.x and y == self.y:
+            fini = input('êtes vous sur y/n: ')
+            if fini == 'y':
+                self.fin = True
+
 
 if __name__ == "__main__":
     l = Labyrinthe(3, 6)
     pnj = hero()
+    print(pnj)
     pnj.x = randint(1, 8)
-    print(pnj.x)
     pnj.y = randint(1, 8)
     print(pnj.x, pnj.y, pnj.lastx, pnj.lasty)
     pnj.choix_deplacement(l)
     print(pnj.x, pnj.y, pnj.lastx, pnj.lasty)
+
+

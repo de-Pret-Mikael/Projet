@@ -202,6 +202,5 @@ class Labyrinthe:  # creation du Labyrinthe
 
 
 if __name__ == "__main__":
-    l = Labyrinthe(3, 6)
-    l.pop_hero()
+    l =  labyrinthe(3,6)
     l.show()
