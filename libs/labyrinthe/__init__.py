@@ -1,1 +1,1 @@
-from .labyrinthe import labyrinthe
+from .labyrinthe import Labyrinthe

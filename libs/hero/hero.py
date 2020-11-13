@@ -1,5 +1,5 @@
 from random import *
-from libs.labyrinthe import labyrinthe
+from libs.labyrinthe import Labyrinthe
 class hero:
 
     def __init__(self):
@@ -101,7 +101,7 @@ class hero:
 
 
 if __name__ == "__main__":
-    l = labyrinthe(3,6)
+    l = Labyrinthe(3, 6)
     pnj = hero()
     pnj.x = randint(1, 8)
     print(pnj.x)
