@@ -53,6 +53,7 @@ class Cell:  # creation de la clss Cell qui sera utiliser par la class Labyrinth
 
 class Labyrinthe:  # creation du Labyrinthe
     """class qui genere tout le labyrinthe de façon aléatoire"""
+
     def __init__(self, height=3, width=3):
         self.__height = round(height)  # hauteur du Labyrinthe
         self.__width = round(width)  # largeur du Labyrinthe
@@ -160,12 +161,12 @@ class Labyrinthe:  # creation du Labyrinthe
         rand = random.randrange(0, len(listOfCell))
         celluleRandom = listOfCell[rand]  # selectionne l objet dans le tableau
         self.set_start(celluleRandom.x, celluleRandom.y)  # attribut les valeur x et y a start
-        del celluleRandom # retire la cellule du tableau pour ne pas la reutiliser
+        del celluleRandom  # retire la cellule du tableau pour ne pas la reutiliser
         # genere un nombre aleatoire entre 0 et la longeur max du tableau listOfCell
         rand = random.randrange(0, len(listOfCell))
         celluleRandom = listOfCell[rand]  # selectionne l objet dans le tableau
         celluleRandom.end = True
-        self.set_end(celluleRandom.x, celluleRandom.y) # attribut les valeur x et y a end
+        self.set_end(celluleRandom.x, celluleRandom.y)  # attribut les valeur x et y a end
         self.pop_hero()  # appel la fonction pop_hero()
 
     def set_start(self, x, y):
@@ -202,5 +203,5 @@ class Labyrinthe:  # creation du Labyrinthe
 
 
 if __name__ == "__main__":
-    l =  labyrinthe(3,6)
+    l = Labyrinthe(3, 6)
     l.show()

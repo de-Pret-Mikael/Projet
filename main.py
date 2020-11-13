@@ -1,8 +1,9 @@
 from libs.labyrinthe import *
 from libs.hero import *
 import os
+
 if __name__ == "__main__":
-    l =labyrinthe(2,2)
+    l = Labyrinthe(2, 2)
     png = hero()
     png.setPosi(**l.start)
     l.show()
@@ -11,6 +12,6 @@ if __name__ == "__main__":
         os.system("cls")
         if png.fin:
             print('Vous avez réussi à sortir, bien jouer')
-        heroPos = {"lastx":png.lastx,"lasty":png.lasty,"newx":png.x,"newy":png.y}
-        l.heroMove(**heroPos)
+        heroPos = {"lastx": png.lastx, "lasty": png.lasty, "newx": png.x, "newy": png.y}
+        l.hero_move(**heroPos)
         l.show()
