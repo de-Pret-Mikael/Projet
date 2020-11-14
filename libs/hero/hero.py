@@ -6,12 +6,12 @@ from libs.labyrinthe import labyrinthe
 class hero:
 
     def __init__(self):
-        self.__x = 0
-        self.__y = 0
-        self.__decal = 0
-        self.lastx = 0
-        self.lasty = 0
-        self.fin = False
+        self.__x = 0 #position x du héro
+        self.__y = 0 #position y du héro
+        self.__decal = 0 #déplacement du héro
+        self.lastx = 0 #avant dernière position x du héro
+        self.lasty = 0 #avant dernière position y du héro
+        self.fin = False #le jeu est t'il fini (True/False)
 
     @property
     def x(self):
@@ -44,10 +44,12 @@ class hero:
         self.__decal = i
 
     def setPosi(self, x, y):
+        """Position du héro au départ"""
         self.x = x
         self.y = y
 
     def droite(self, laby):
+        """Fonction pour ce déplacer d' un pas saut s'il y a un mur"""
         self.passe(self.x,self.y)
         if laby.get_cell(self.x+1,self.y).wall:
             print('Vous ne pouvez pas traverser les murs :(')
@@ -55,6 +57,7 @@ class hero:
             self.x += 1
 
     def gauche(self, laby):
+        """Fonction pour ce déplacer d' un pas saut s'il y a un mur"""
         self.passe(self.x,self.y)
         if laby.get_cell(self.x-1,self.y).wall:
             print('Vous ne pouvez pas traverser les murs :(')
@@ -62,6 +65,7 @@ class hero:
             self.x -= 1
 
     def haut(self, laby):
+        """Fonction pour ce déplacer d' un pas saut s'il y a un mur"""
         self.passe(self.x,self.y)
         if laby.get_cell(self.x,self.y-1).wall:
             print('Vous ne pouvez pas traverser les murs :(')
@@ -69,6 +73,7 @@ class hero:
             self.y -= 1
 
     def bas(self, laby):
+        """Fonction pour ce déplacer d' un pas saut s'il y a un mur"""
         self.passe(self.x,self.y)
         if laby.get_cell(self.x,self.y+1).wall:
             print('Vous ne pouvez pas traverser les murs :(')
@@ -79,6 +84,7 @@ class hero:
         return self.laby[position[0]][position[1]] != -1
 
     def choix_deplacement(self,laby):
+        """Fonction demandant qu'elle déplacement veut faire le joueur"""
         decal = 0
         condi = True
         while condi:
@@ -101,10 +107,12 @@ class hero:
 
 
     def passe(self, lastx, lasty):
+        """avant dernière position du héro"""
         self.lastx = lastx
         self.lasty = lasty
 
     def end(self, x, y):
+        """permet au joueur de quitter"""
         if x == self.x and y == self.y:
             fini = input('êtes vous sur y/n: ')
             if fini == 'y':
