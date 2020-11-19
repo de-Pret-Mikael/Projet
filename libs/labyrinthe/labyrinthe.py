@@ -33,6 +33,9 @@ class Cell:  # creation de la clss Cell qui sera utiliser par la class Labyrinth
 
     def cell_adj(self, xMax, yMax):
         """
+        Fonction qui renvoie un dictionnnaire composée des position des cellule adjacente a la posiotn donnée en
+        paramètre
+
         :param xMax: valeur max de x
         :param yMax: valeur max de y
         :return envoie un dictionnaire de dictionnnaire composé des cellule adjacente
@@ -126,8 +129,13 @@ class Labyrinthe:  # creation du Labyrinthe
                         self.new_val(vTop, vDown)
 
     def new_val(self, val, nVal):
-        """fonction utiliser par buildWay qui permet de changer la valeur de certaine cellule lors de l execution
-         de la fonction"""
+        """
+        fonction utiliser par buildWay qui permet de changer la valeur de certaine cellule lors de l execution
+         de la fonction
+
+        :param val: ancienne valeur de la cellule
+        :param nVal: nouvelle valeur de la cellule
+        """
         for y in self.laby:
             for x in y:
                 if x.numb == val:
@@ -142,7 +150,14 @@ class Labyrinthe:  # creation du Labyrinthe
         return False
 
     def hero_move(self, lastx, lasty, newx, newy):
-        """fonction qui vas permettre de changer la position du hero en changeant la valeur hero dans les cellules"""
+        """
+        fonction qui vas permettre de changer la position du hero en changeant la valeur hero dans les cellules
+
+        :param lastx: ancienne position x du hero
+        :param lasty: ancienne position y du hero
+        :param newx: nouvelle postion x du hero
+        :param newy: nouvelle postion y du hero
+        """
         self.get_cell(lastx, lasty).hero = False
         self.get_cell(newx, newy).hero = True
 
@@ -170,11 +185,21 @@ class Labyrinthe:  # creation du Labyrinthe
         self.pop_hero()  # appel la fonction pop_hero()
 
     def set_start(self, x, y):
-        """cree le dictionnaire qui sera introduit dans la variable start"""
+        """
+        cree le dictionnaire qui sera introduit dans la variable start
+
+        :param x: position x du début du labyrinthe
+        :param y: position y du début du labyrinthe
+        """
         self.start = {"x": x, "y": y}
 
     def set_end(self, x, y):
-        """cree le dictionnaire qui sera introduit dans la variable end"""
+        """
+        cree le dictionnaire qui sera introduit dans la variable end
+
+        :param x: position x de la fin du labyrinthe
+        :param y: position y de la fin du labyrinthe
+        """
         self.end = {"x": x, "y": y}
 
     def show(self):
@@ -193,7 +218,13 @@ class Labyrinthe:  # creation du Labyrinthe
             print("".join(t))
 
     def wall_around(self, x, y):
-        """fonction qui return les positions des differents mur qu'il y a autour de la cellules"""
+        """
+        fonction qui return les positions des differents mur qu'il y a autour de la cellules
+
+        :param x: position x de la cellule
+        :param y: position y de la cellule
+        :return: retourne une liste de l emplacement d'un mur par apport a une cellule
+        """
         list = []
         dic = self.get_cell(x, y).cell_adj(self.width, self.height)
         for i in dic:
