@@ -115,6 +115,16 @@ class hero:
             if fini == 'y':
                 self.fin = True
 
+    def move(self, char, laby):
+        if char == "d":
+            self.droite(laby)
+        if char == "z":
+            self.haut(laby)
+        if char == "q":
+            self.gauche(laby)
+        if char == "s":
+            self.bas(laby)
+
 
 if __name__ == "__main__":
     l = Labyrinthe(3, 6)
