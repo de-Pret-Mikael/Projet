@@ -5,7 +5,7 @@ os.environ['TCL_LIBRARY'] = 'c:/python38/tcl/tcl8.6'
 os.environ['TK_LIBRARY'] = 'c:/python38/tcl/tk8.6'
 from cx_Freeze import setup, Executable
 
-buildOptions =  {"packages": ["os"]}
+buildOptions = {"packages": ["os","PIL"]}
 base = None
 if sys.platform == 'Win32':
     base = 'Win32Gui'
