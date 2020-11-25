@@ -232,6 +232,18 @@ class Labyrinthe:  # creation du Labyrinthe
                 list.append(i)
         return list
 
+    def heroMove(self, lastx, lasty, newx, newy):
+        """
+        fonction qui vas changer le hero de cellule
+
+        :param lastx: ancienne position x du hero
+        :param lasty: ancienne position y du hero
+        :param newx: nouvelle position x du hero
+        :param newy: nouvelle position y du hero
+        """
+        self.get_cell(lastx, lasty).hero = False
+        self.get_cell(newx, newy).hero = True
+
 
 if __name__ == "__main__":
     l = Labyrinthe(3, 6)
