@@ -107,7 +107,13 @@ if __name__ == "__main__":
     first_menu.add_command(label="new", command=new)
     first_menu.add_command(label="quitter", command=myapp.quit)
 
+    second_menu = tkinter.Menu(mainmenu,tearoff=0)
+    second_menu.add_command(label="commande")
+
+
+
     mainmenu.add_cascade(label="jeu", menu=first_menu)
+    mainmenu.add_cascade(label="option", menu=second_menu)
     myapp.configure(menu=mainmenu)
     tupleSequence = ("<KeyPress-z>", "<KeyPress-q>", "<KeyPress-s>", "<KeyPress-d>", "<KeyPress-e>")
     myapp.event_add("<<move>>", *tupleSequence)
