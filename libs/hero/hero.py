@@ -3,7 +3,7 @@ from random import *
 from libs.labyrinthe import labyrinthe
 
 
-class hero:
+class Hero:
 
     def __init__(self):
         self.__x = 0  # position x du héro
