@@ -3,14 +3,14 @@ import tkinter
 from PIL import ImageTk,Image
 
 
-class photo:
+class Photo:
     def __init__(self, path, sizetup=(32,32),photo=False):
         self.path = path
         self.photo = photo
         self.sizetup = sizetup
-        self.buildDict()
+        self.build_dict()
 
-    def buildPhoto(self, name,):
+    def build_photo(self, name):
         path = "{}/{}".format(self.path, name)
         img = Image.open(path)
         img = img.resize(self.sizetup,Image.ANTIALIAS)
@@ -20,15 +20,15 @@ class photo:
         else:
             return img
 
-    def buildDict(self):
-        lname = self.takeName()
+    def build_dict(self):
+        lname = self.take_name()
         dic = {}
         for i in lname:
             name = "".join(i.split(".png"))
-            dic[name] = self.buildPhoto(i)
+            dic[name] = self.build_photo(i)
         self.__dict__ = dic
 
-    def takeName(self):
+    def take_name(self):
         chemin = "\\".join(self.path.split("/"))
         dir = subprocess.run(["dir", chemin], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                              universal_newlines=True)
@@ -44,6 +44,6 @@ class photo:
 
 if __name__ == "__main__":
     myapp = tkinter.Tk()
-    p = photo("../../testimg/dungeon")
+    p = Photo("../../testimg/dungeon")
     print(p.__dict__)
     # print(p.wallH)

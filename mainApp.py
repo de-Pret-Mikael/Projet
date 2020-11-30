@@ -1,7 +1,7 @@
 from random import randrange
 from PIL import ImageGrab, ImageTk, Image
 import tkinter
-from libs.photo import photo
+from libs.photo import Photo
 from libs.labyrinthe import Labyrinthe
 from libs.application.application import App
 from libs.hero import *
@@ -98,8 +98,8 @@ if __name__ == "__main__":
     myapp = App(title=name, minSize=minsize, laby=Labyrinthe(height, width), hero=hero())
     myapp.build_can(height=(height * 2 + 1) * size - 2, width=(width * 2 + 1) * size - 2, bg="black")
     # image
-    pDun = photo("img/dungeon",(size,size))
-    pPng = photo("img/player/blue",(size,size),photo=True)
+    pDun = Photo("img/dungeon", (size, size))
+    pPng = Photo("img/player/blue", (size, size), photo=True)
     # menu
     mainmenu = tkinter.Menu(myapp)
 
