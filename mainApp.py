@@ -3,7 +3,7 @@ from PIL import ImageGrab, ImageTk, Image
 import tkinter
 from libs.photo import photo
 from libs.labyrinthe import Labyrinthe
-from libs.application.application import app
+from libs.application.application import App
 from libs.hero import *
 
 def interDungeon(size, width, height, laby, pDun):
@@ -61,9 +61,9 @@ def interHero(app, hero, pPng, soldier=True):
     xCan = hero.x * size +2
     yCan = hero.y * size +2
     if soldier:
-        app.drawImg(xCan, yCan, anchor="nw", img=pPng.soldier)
+        app.draw_img(xCan, yCan, anchor="nw", img=pPng.soldier)
     else:
-        app.drawImg(xCan, yCan, anchor="nw", img=pPng.mage)
+        app.draw_img(xCan, yCan, anchor="nw", img=pPng.mage)
 
 def move(event):
     l = event.widget.laby
@@ -74,7 +74,7 @@ def move(event):
     png.move(event.char,laby=l)
     heroPos = {"lastx": png.lastx, "lasty": png.lasty, "newx": png.x, "newy": png.y}
     l.heroMove(**heroPos)
-    myapp.updateCan(anchor="nw")
+    myapp.update_can(anchor="nw")
     interHero(myapp, png, pPng,soldier=False)
     myapp.update()
 
@@ -83,8 +83,8 @@ def new():
     l = myapp.laby
     png = myapp.hero
     png.setPosi(**l.start)
-    myapp.saveCan(interDungeon(size,width,height,l,pDun))
-    myapp.updateCan(anchor="nw")
+    myapp.save_can(interDungeon(size, width, height, l, pDun))
+    myapp.update_can(anchor="nw")
     interHero(myapp, png, pPng,soldier=False)
     myapp.update()
     pass
@@ -95,8 +95,8 @@ if __name__ == "__main__":
     # application
     name = "students's dungeon"
     minsize = ((width * 2 + 1) * size, (height * 2 + 1) * size)
-    myapp = app(title=name, minSize=minsize, laby=Labyrinthe(height, width), hero=hero())
-    myapp.buildCan(height=(height * 2 + 1) * size - 2, width=(width * 2 + 1) * size - 2, bg="black")
+    myapp = App(title=name, minSize=minsize, laby=Labyrinthe(height, width), hero=hero())
+    myapp.build_can(height=(height * 2 + 1) * size - 2, width=(width * 2 + 1) * size - 2, bg="black")
     # image
     pDun = photo("img/dungeon",(size,size))
     pPng = photo("img/player/blue",(size,size),photo=True)
@@ -117,7 +117,7 @@ if __name__ == "__main__":
     myapp.configure(menu=mainmenu)
     tupleSequence = ("<KeyPress-z>", "<KeyPress-q>", "<KeyPress-s>", "<KeyPress-d>", "<KeyPress-e>")
     myapp.event_add("<<move>>", *tupleSequence)
-    myapp.addBind("<<move>>", move)
+    myapp.add_bind("<<move>>", move)
     myapp.launch()
 
     # myapp.resizable(width=False,height=False)
