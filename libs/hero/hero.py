@@ -128,7 +128,7 @@ class Hero:
 
 if __name__ == "__main__":
     l = Labyrinthe(3, 6)
-    pnj = hero()
+    pnj = Hero()
     print(pnj)
     pnj.x = randint(1, 8)
     pnj.y = randint(1, 8)

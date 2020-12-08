@@ -8,9 +8,9 @@ class Photo:
         self.path = path
         self.photo = photo
         self.sizetup = sizetup
-        self.build_dict()
+        self.buildDict()
 
-    def build_photo(self, name):
+    def buildPhoto(self, name):
         path = "{}/{}".format(self.path, name)
         img = Image.open(path)
         img = img.resize(self.sizetup,Image.ANTIALIAS)
@@ -20,15 +20,15 @@ class Photo:
         else:
             return img
 
-    def build_dict(self):
-        lname = self.take_name()
+    def buildDict(self):
+        lname = self.takeName()
         dic = {}
         for i in lname:
             name = "".join(i.split(".png"))
-            dic[name] = self.build_photo(i)
+            dic[name] = self.buildPhoto(i)
         self.__dict__ = dic
 
-    def take_name(self):
+    def takeName(self):
         chemin = "\\".join(self.path.split("/"))
         dir = subprocess.run(["dir", chemin], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                              universal_newlines=True)
@@ -44,6 +44,6 @@ class Photo:
 
 if __name__ == "__main__":
     myapp = tkinter.Tk()
-    p = Photo("../../testimg/dungeon")
+    p = photo("../../testimg/dungeon")
     print(p.__dict__)
     # print(p.wallH)
